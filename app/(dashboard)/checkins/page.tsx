@@ -2,6 +2,8 @@ import CheckInTable from '@/components/check-in-table';
 import { getQueryClient } from '@/components/providers/query-provider/get-query-client';
 import { checkinsQueryOptions } from '@/lib/queries/checkins.query';
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import { Suspense } from 'react';
+import { Loader2 } from 'lucide-react';
 
 const HomePage = async () => {
   const queryClient = getQueryClient();
@@ -20,7 +22,15 @@ const HomePage = async () => {
           </p>
         </header>
 
-        <CheckInTable />
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center p-12">
+              <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
+            </div>
+          }
+        >
+          <CheckInTable />
+        </Suspense>
       </div>
     </HydrationBoundary>
   );

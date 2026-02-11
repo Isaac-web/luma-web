@@ -35,9 +35,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         return Response.redirect(new URL('/checkins', nextUrl));
       }
 
-      if (isLoggedIn && isDashboardPage && !isAdmin) {
-        return Response.redirect(new URL('/403', nextUrl));
-      }
+      // if (isLoggedIn && isDashboardPage && !isAdmin) {
+      //   return Response.redirect(new URL('/403', nextUrl));
+      // }
 
       return true;
     },

@@ -18,6 +18,24 @@ export function ConnectionStatus() {
     setPrevConnected(isConnected);
   }, [isConnected, prevConnected, isRetrying]);
 
+  // Keep-alive: Silently ping the backend every 45 seconds
+  useEffect(() => {
+    const pingInterval = setInterval(async () => {
+      try {
+        await fetch(
+          process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001',
+          {
+            mode: 'no-cors', // Minimize impact
+          },
+        );
+      } catch (error) {
+        // Silent fail
+      }
+    }, 45000);
+
+    return () => clearInterval(pingInterval);
+  }, []);
+
   // Case 1: Offline/Retrying Banner
   if (!isConnected && (isDisconnected || isRetrying)) {
     return (

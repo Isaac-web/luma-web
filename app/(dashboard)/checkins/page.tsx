@@ -13,7 +13,7 @@ const HomePage = async () => {
       <div className="space-y-8">
         <header className="space-y-2">
           <h1 className="text-2xl sm:text-3xl font-medium text-gray-900 tracking-tight">
-            Check-in Dashboard
+            Check-in Trail
           </h1>
           <p className="text-gray-500 text-sm sm:text-base">
             Real-time monitoring of student arrivals and learning statuses.

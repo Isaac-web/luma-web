@@ -31,11 +31,11 @@ export const LiveCheckInStatus = () => {
 
   const configs = {
     idle: {
-      label: 'Live System Active',
+      label: 'QR Code Activity',
       icon: Activity,
-      color: 'text-blue-500',
-      bg: 'bg-blue-50',
-      border: 'border-blue-100',
+      color: 'text-gray-500',
+      bg: 'bg-gray-50',
+      border: 'border-gray-100',
       animate: {},
     },
     scanning: {

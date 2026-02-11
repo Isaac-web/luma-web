@@ -18,32 +18,21 @@ export const RealTimeEventsProvider = ({
     if (!socket) return;
 
     const handleCheckinCreated = async () => {
-      toast.success('Checkin created successfully');
+      toast.success('New Activity', {
+        description: 'A new check-in was recorded.',
+        position: 'top-center',
+        style: {
+          background: 'var(--background)',
+          color: 'var(--foreground)',
+        },
+      });
       await queryClient.invalidateQueries(checkinsQueryOptions());
     };
 
-    const handleCodeScanned = async () => {
-      console.log('Code was scanned.');
-    };
-
-    const handleCheckinCancelled = async () => {
-      console.log('Checkin was cancelled.');
-    };
-
-    const handleCheckinConfirmed = async () => {
-      console.log('Checkin was confirmed.');
-    };
-
     socket.on('checkin:signed', handleCheckinCreated);
-    socket.on('checkin:code-scanned', handleCodeScanned);
-    socket.on('checkin:confirmed', handleCheckinConfirmed);
-    socket.on('checkin:cancelled', handleCheckinCancelled);
 
     return () => {
       socket.off('checkin:signed', handleCheckinCreated);
-      socket.off('checkin:code-scanned', handleCodeScanned);
-      socket.off('checkin:confirmed', handleCheckinConfirmed);
-      socket.off('checkin:cancelled', handleCheckinCancelled);
     };
   }, [socket]);
 

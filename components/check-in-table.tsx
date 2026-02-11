@@ -9,7 +9,7 @@ import React, { useEffect } from 'react';
 import { Loader2 } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { CheckInFilters } from './check-in-filters';
-import { LiveCheckInStatus } from './table-glow-effect';
+import { LiveCheckInStatus } from './live-checkin-status';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const CheckInTable: React.FC = () => {
@@ -96,9 +96,9 @@ const CheckInTable: React.FC = () => {
                     <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       Check-in Date
                     </th>
-                    <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                    {/* <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                       Learning Status
-                    </th>
+                    </th> */}
                     <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">
                       Course Progress
                     </th>
@@ -145,13 +145,13 @@ const CheckInTable: React.FC = () => {
                             {formatDate(record.createdAt)}
                           </span>
                         </td>
-                        <td className="px-6 py-3">
+                        {/* <td className="px-6 py-3">
                           <span
                             className={`px-2.5 py-1 rounded-full text-xs font-semibold border ${status.color}`}
                           >
                             {status.label}
                           </span>
-                        </td>
+                        </td> */}
                         <td className="px-6 py-3 text-right">
                           <span className="text-sm font-mono text-gray-700 font-medium">
                             {record.user.completedCourses} /{' '}
